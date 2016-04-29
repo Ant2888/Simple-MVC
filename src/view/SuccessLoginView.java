@@ -9,7 +9,6 @@ import javafx.stage.Stage;
 
 public class SuccessLoginView extends ViewGeneric{
 
-	private Stage stage;
 	private VBox root;
 	
 	public SuccessLoginView(Stage stage) {
@@ -23,12 +22,6 @@ public class SuccessLoginView extends ViewGeneric{
 		
 		root.getChildren().add(tf);
 		root.setStyle("-fx-alignment: center center");
-		
-		this.stage = stage;
 		stage.setScene(this);
-	}
-	
-	public Stage getStage(){
-		return stage;
 	}
 }
