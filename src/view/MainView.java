@@ -13,7 +13,6 @@ public class MainView extends ViewGeneric{
 
 	private TextField txt1;
 	private PasswordField txt2;
-	private Stage stage;
 	
 	public MainView(Stage stage) {
 		super(stage, new VBox(10), 400, 200);
@@ -38,7 +37,6 @@ public class MainView extends ViewGeneric{
 		vb.getChildren().addAll(txt1, txt2, b,db);
 		
 		stage.setScene(this);
-		this.stage = stage;
 		init();
 	}
 
