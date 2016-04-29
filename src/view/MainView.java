@@ -15,7 +15,7 @@ public class MainView extends ViewGeneric{
 	private PasswordField txt2;
 	
 	public MainView(Stage stage) {
-		super(stage, new VBox(10), 400, 200);
+		super(stage, new VBox(10), GloblVars.WIDTH, GloblVars.HEIGHT);
 		VBox vb = (VBox)getRoot();
 		vb.setStyle("-fx-alignment: center center");
 		obsArr = new ArrayList<>();
