@@ -3,7 +3,9 @@ package view;
 import java.util.ArrayList;
 
 import handling.GloblVars;
-import javafx.scene.control.TextField;
+import handling.Observer;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -11,17 +13,21 @@ public class SuccessLoginView extends ViewGeneric{
 
 	private VBox root;
 	
-	public SuccessLoginView(Stage stage) {
-		super(stage, new VBox(), GloblVars.WIDTH, GloblVars.HEIGHT);
+	//You would make this display screen take a person to load in all the data for
+	public SuccessLoginView(Stage stage, ArrayList<Observer> obsArr) {
+		super(stage, new VBox(), GloblVars.WIDTH, GloblVars.HEIGHT, obsArr);
 		root = (VBox) getRoot();
 		
 		obsArr = new ArrayList<>();
 		
-		TextField tf = new TextField("Success!");
-		tf.setPrefWidth(getWidth()/2);
+		Label tf = new Label("Success!");
+		Button nxtSc = new Button("Another Scene");
+		nxtSc.setOnAction(e->{
+			NotifyObservers(GloblVars.Events.SLV_GOTO_AS);
+		});
 		
-		root.getChildren().add(tf);
+		root.getChildren().addAll(tf, nxtSc);
 		root.setStyle("-fx-alignment: center center");
-		stage.setScene(this);
+		init();
 	}
 }

@@ -1,4 +1,5 @@
-/view/
 /controller/
-/handling/
 /driver/
+/handling/
+/model/
+/view/

@@ -20,10 +20,17 @@ public abstract class ViewGeneric extends Scene implements Subject{
 		super(root, width, height);
 		this.stage = stage;
 	}
+	
+	public ViewGeneric(Stage stage, Parent root, int width, int height, ArrayList<Observer> obsArr) {
+		super(root, width, height);
+		this.stage = stage;
+		this.obsArr = obsArr;
+	}
 
 	//use this method at the end of every scene to do the check above
 	//can override
 	protected void init(){
+		stage.setScene(this);
 		if(first){
 			stage.setResizable(false);
 			stage.setTitle("MVC Example");
@@ -32,18 +39,25 @@ public abstract class ViewGeneric extends Scene implements Subject{
 		}
 	}
 	
+	public ArrayList<Observer> getObservers(){
+		return obsArr;
+	}
+	
 	@Override
 	public void addObserver(Observer o){
+		if(obsArr == null) obsArr = new ArrayList<>();
 		obsArr.add(o);
 	}
 	
 	@Override
 	public void removeObserver(Observer o){
+		if(obsArr == null) return;
 		obsArr.remove(o);
 	}
 	
 	@Override
-	public void NotifyObserver(Object args){
+	public void NotifyObservers(Object args){
+		if(obsArr == null) return;
 		for (Observer observer : obsArr) {
 			observer.update(args);
 		}

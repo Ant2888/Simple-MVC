@@ -2,6 +2,8 @@ package view;
 
 import java.util.ArrayList;
 
+import handling.GloblVars;
+import handling.Observer;
 import handling.GloblVars.Events;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -14,8 +16,8 @@ public class MainView extends ViewGeneric{
 	private TextField txt1;
 	private PasswordField txt2;
 	
-	public MainView(Stage stage) {
-		super(stage, new VBox(10), GloblVars.WIDTH, GloblVars.HEIGHT);
+	public MainView(Stage stage, ArrayList<Observer> obsArr) {
+		super(stage, new VBox(10), GloblVars.WIDTH, GloblVars.HEIGHT, obsArr);
 		VBox vb = (VBox)getRoot();
 		vb.setStyle("-fx-alignment: center center");
 		obsArr = new ArrayList<>();
@@ -26,17 +28,15 @@ public class MainView extends ViewGeneric{
 		
 		Button b = new Button("SUBMIT");
 		b.setOnAction(e->{
-			NotifyObserver(Events.MV_SUBMIT_BUTTON);
+			NotifyObservers(Events.MV_SUBMIT_BUTTON);
 		});
 		Button db = new Button("GET DATA");
 		db.setOnAction(e->{
-			NotifyObserver(Events.MV_GET_DATA);
+			NotifyObservers(Events.MV_GET_DATA);
 		});
 		
 		
 		vb.getChildren().addAll(txt1, txt2, b,db);
-		
-		stage.setScene(this);
 		init();
 	}
 

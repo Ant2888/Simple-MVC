@@ -14,7 +14,7 @@ public class Driver extends Application{
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		new Controller(new MainView(primaryStage), new PersonDB());
+		new Controller(new MainView(primaryStage, null), new PersonDB());
 	}
 	
 }
